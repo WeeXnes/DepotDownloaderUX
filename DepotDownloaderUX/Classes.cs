@@ -4,13 +4,20 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-public class InputBox
+
+public static class DepotDownloaderUX
+{
+    public static string CreateTwoFactorPrompt()
+    {
+        return new InputBox("Enter 2FA Code").ShowDialog();
+    }
+    private class InputBox
 {
     Window Box = new Window();//window for the inputbox
     FontFamily font = new FontFamily("Avenir");//font for the whole inputbox
     int FontSize = 14;//fontsize for the input
     StackPanel sp1 = new StackPanel();// items container
-    string title = "Enter Two Factor Code";//title as heading
+    string title = "Two Factor";//title as heading
     string boxcontent;//title
     string defaulttext = "";//default textbox content
     string errormessage = "";//error messagebox content
@@ -89,6 +96,7 @@ public class InputBox
 
     private void windowdef()// window building - check only for window size
     {
+        
         Box.Height = 100;// Box Height
         Box.Width = 450;// Box Width
         Box.Background = BoxBackgroundColor;
@@ -189,3 +197,6 @@ public class InputBox
         return input.Text;
     }
 }
+}
+
+
